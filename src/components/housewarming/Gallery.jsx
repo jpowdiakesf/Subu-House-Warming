@@ -1,26 +1,24 @@
-const db = globalThis.__B44_DB__ || { auth:{ isAuthenticated: async()=>false, me: async()=>null }, entities:new Proxy({}, { get:()=>({ filter:async()=>[], get:async()=>null, create:async()=>({}), update:async()=>({}), delete:async()=>({}) }) }), integrations:{ Core:{ UploadFile:async()=>({ file_url:'' }) } } };
-
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from './useScrollAnimation';
 
 const PHOTOS = [
   {
-    src: 'https://media.db.com/images/public/6a0b694bf115019d5663109a/0999d81d4_IMG_20260428_154039jpg.jpg',
+    src: '/house_front.jpeg',
     alt: 'Nazareth - Front view',
     caption: 'The Front',
   },
   {
-    src: 'https://media.db.com/images/public/6a0b694bf115019d5663109a/30769abcd_IMG_20260428_154124png.jpg',
+    src: '/house_side.jpeg',
     alt: 'Nazareth - Side view',
     caption: 'Our Home',
   },
   {
-    src: 'https://media.db.com/images/public/6a0b694bf115019d5663109a/0999d81d4_IMG_20260428_154039jpg.jpg',
+    src: '/house_front.jpeg',
     alt: 'Nazareth - Entrance',
     caption: 'The Entrance',
   },
   {
-    src: 'https://media.db.com/images/public/6a0b694bf115019d5663109a/30769abcd_IMG_20260428_154124png.jpg',
+    src: '/house_side.jpeg',
     alt: 'Nazareth - Garden',
     caption: 'The Garden',
   },
@@ -63,7 +61,6 @@ export default function Gallery() {
   return (
     <section id="gallery" className="py-24 md:py-36 px-6 md:px-14 bg-secondary/30">
       <div className="max-w-6xl mx-auto">
-
         <motion.div
           ref={headingRef}
           initial={{ opacity: 0, y: 30 }}
@@ -84,7 +81,6 @@ export default function Gallery() {
             A home lovingly built, waiting to be filled with memories, laughter, and God's grace.
           </p>
         </motion.div>
-
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
           {PHOTOS.map((photo, index) => (
             <PhotoCard key={index} photo={photo} index={index} />
