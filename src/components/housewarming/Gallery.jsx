@@ -3,22 +3,22 @@ import { useScrollAnimation } from './useScrollAnimation';
 
 const PHOTOS = [
   {
-    src: '/house_front.jpeg',
+    src: '/images/house_front.jpeg',
     alt: 'Nazareth - Front view',
     caption: 'The Front',
   },
   {
-    src: '/house_side.jpeg',
+    src: '/images/house_side.jpeg',
     alt: 'Nazareth - Side view',
     caption: 'Our Home',
   },
   {
-    src: '/house_front.jpeg',
+    src: '/images/house_front.jpeg',
     alt: 'Nazareth - Entrance',
     caption: 'The Entrance',
   },
   {
-    src: '/house_side.jpeg',
+    src: '/images/house_side.jpeg',
     alt: 'Nazareth - Garden',
     caption: 'The Garden',
   },
