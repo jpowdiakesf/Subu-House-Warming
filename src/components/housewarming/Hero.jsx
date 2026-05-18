@@ -1,15 +1,12 @@
-const db = globalThis.__B44_DB__ || { auth:{ isAuthenticated: async()=>false, me: async()=>null }, entities:new Proxy({}, { get:()=>({ filter:async()=>[], get:async()=>null, create:async()=>({}), update:async()=>({}), delete:async()=>({}) }) }), integrations:{ Core:{ UploadFile:async()=>({ file_url:'' }) } } };
-
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 
-const HERO_image = '/images/house_front.jpeg';
+const HERO_IMAGE = '/images/house_front.jpeg';
 
 export default function Hero() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end start'] });
-
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
   const textY = useTransform(scrollYProgress, [0, 1], [0, -60]);
@@ -19,7 +16,11 @@ export default function Hero() {
     <section ref={containerRef} className="relative min-h-screen flex items-end overflow-hidden">
       {/* Parallax background */}
       <motion.div style={{ y: imageY, scale: imageScale }} className="absolute inset-0 z-0">
-        <img src={HERO_IMAGE} alt="Nazareth - Our New Home" className="w-full h-full object-cover" />
+        <img 
+          src={HERO_IMAGE} 
+          alt="Nazareth - Our New Home" 
+          className="w-full h-full object-cover" 
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-[#1c120a]/85 via-[#1c120a]/30 to-[#1c120a]/10" />
       </motion.div>
 
@@ -29,7 +30,6 @@ export default function Hero() {
       {/* Hero content */}
       <motion.div style={{ y: textY, opacity }} className="relative z-10 w-full pb-16 md:pb-28">
         <div className="max-w-5xl mx-auto px-6 md:px-14">
-
           {/* Top label */}
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -101,7 +101,9 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8 }}
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ delay: 1.8 }}
         style={{ opacity }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1"
       >
