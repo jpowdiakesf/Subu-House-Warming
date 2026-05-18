@@ -3,8 +3,5 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  logLevel: 'error',
-  plugins: [
-    react(),
-  ],
+  plugins: [react()],
 })
