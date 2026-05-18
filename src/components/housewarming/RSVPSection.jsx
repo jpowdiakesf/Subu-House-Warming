@@ -3,7 +3,7 @@ import { MessageCircle, Phone } from 'lucide-react';
 import { useScrollAnimation } from './useScrollAnimation';
 
 const WHATSAPP_NUMBER = '971551455347';
-const DISPLAY_NUMBER = '+971 55 1455347';
+const DISPLAY_NUMBER = '+971 55 145 5347';
 
 export default function RSVPSection() {
   const [ref, isVisible] = useScrollAnimation();
