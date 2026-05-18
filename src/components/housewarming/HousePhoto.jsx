@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from './useScrollAnimation';
 
-const IMAGE_2 = '/house_side.jpeg';
+const IMAGE_2 = '/images/house_side.jpeg';
 
 export default function HousePhoto() {
   const [ref, isVisible] = useScrollAnimation(0.1);
