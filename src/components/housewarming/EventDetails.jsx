@@ -3,8 +3,8 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
 import { useScrollAnimation } from './useScrollAnimation';
 
 const details = {
-  date: 'Sunday, 26th July 2026',
-  time: '9:00 AM — 5:00 PM',
+  date: 'Saturday, 25th July 2026',
+  time: '11:00 AM',
   address: 'Location will be shared soon via WhatsApp',
 };
 
