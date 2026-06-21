@@ -10,7 +10,12 @@ const details = {
 
 const MAPS_LINK = 'https://maps.app.goo.gl/9E7QtTRCPePSwCQ38';
 
-function Card({ icon: Icon, label, value, subValue, delay }) {
+// 9°05'33.0"N 76°50'39.0"E = 9.0925, 76.8441667
+// !5e1 = satellite | !2z = pin from DMS coords | d200 = tight zoom
+const MAP_EMBED_SRC =
+  'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d200!2d76.8441667!3d9.0925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDUnMzMuMCJOIDc2wrA1MCczOS4wIkU!5e1!3m2!1sen!2sin!4v1750000000003!5m2!1sen!2sin';
+
+function Card({ icon: Icon, label, value, delay }) {
   const [ref, isVisible] = useScrollAnimation(0.1);
   return (
     <motion.div
@@ -28,7 +33,6 @@ function Card({ icon: Icon, label, value, subValue, delay }) {
         <div>
           <p className="font-sans text-xs tracking-[0.25em] uppercase text-primary/80 mb-2 font-bold">{label}</p>
           <p className="font-serif text-2xl md:text-3xl font-semibold text-foreground">{value}</p>
-          {subValue && <p className="font-sans text-sm text-muted-foreground mt-1.5 italic">{subValue}</p>}
         </div>
       </div>
     </motion.div>
@@ -43,7 +47,6 @@ export default function EventDetails() {
     <section id="details" className="py-24 md:py-36 px-6 md:px-14 bg-background">
       <div className="max-w-6xl mx-auto">
 
-        {/* Heading */}
         <motion.div
           ref={headingRef}
           initial={{ opacity: 0, y: 30 }}
@@ -61,14 +64,13 @@ export default function EventDetails() {
           </h2>
         </motion.div>
 
-        {/* Cards */}
         <div className="grid md:grid-cols-3 gap-6">
           <Card icon={Calendar} label="Date" value={details.date} delay={0.1} />
           <Card icon={Clock} label="Time" value={details.time} delay={0.2} />
           <Card icon={MapPin} label="Location" value={details.address} delay={0.3} />
         </div>
 
-        {/* Map image with directions button */}
+        {/* Google Maps embed — satellite, pinned to exact coords */}
         <motion.div
           ref={mapRef}
           initial={{ opacity: 0, y: 30 }}
@@ -76,32 +78,19 @@ export default function EventDetails() {
           transition={{ duration: 0.9, delay: 0.2 }}
           className="mt-10 rounded-sm overflow-hidden shadow-lg border border-border/60 relative"
         >
-          {/* Gold top accent */}
           <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/60 via-primary to-primary/60 z-10" />
 
-          {/* Clickable map image — opens Google Maps */}
-          <a
-            href={MAPS_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block relative group"
-          >
-            <img
-              src="/images/map-location.png"
-              alt="Location map — Thekkedathu Chamakkala Vadakkethil, Nazareth"
-              className="w-full object-cover"
-              style={{ maxHeight: '360px', objectPosition: 'center' }}
-            />
-            {/* Hover overlay */}
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center">
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 text-foreground font-sans font-bold text-sm px-5 py-2.5 rounded-full shadow-lg flex items-center gap-2">
-                <Navigation className="w-4 h-4 text-primary" />
-                Open in Google Maps
-              </span>
-            </div>
-          </a>
+          <iframe
+            title="Nazareth Location"
+            src={MAP_EMBED_SRC}
+            width="100%"
+            height="360"
+            style={{ border: 0, display: 'block' }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
 
-          {/* Bottom bar */}
           <div className="bg-background px-5 py-4 flex items-center justify-between border-t border-border/40 gap-3">
             <div className="flex items-center gap-2 text-muted-foreground min-w-0">
               <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
@@ -119,7 +108,6 @@ export default function EventDetails() {
           </div>
         </motion.div>
 
-        {/* Verse banner */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
