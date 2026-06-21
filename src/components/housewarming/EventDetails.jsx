@@ -10,10 +10,6 @@ const details = {
 
 const MAPS_LINK = 'https://maps.app.goo.gl/9E7QtTRCPePSwCQ38';
 
-// Resolved coordinates from the short link (Chamakkala, Kerala area)
-const MAP_EMBED_SRC =
-  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.5!2d76.3!3d10.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDAzJzAwLjAiTiA3NsKwMTgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1000000000000!5m2!1sen!2sin';
-
 function Card({ icon: Icon, label, value, subValue, delay }) {
   const [ref, isVisible] = useScrollAnimation(0.1);
   return (
@@ -72,7 +68,7 @@ export default function EventDetails() {
           <Card icon={MapPin} label="Location" value={details.address} delay={0.3} />
         </div>
 
-        {/* Google Maps embed */}
+        {/* Map image with directions button */}
         <motion.div
           ref={mapRef}
           initial={{ opacity: 0, y: 30 }}
@@ -83,31 +79,42 @@ export default function EventDetails() {
           {/* Gold top accent */}
           <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/60 via-primary to-primary/60 z-10" />
 
-          <iframe
-            title="Nazareth Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.207!2d76.3482!3d10.0469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d513abdd337%3A0x36a47536e6fd03f4!2sThekkedathu%20Chamakkala%20Vadakkethil!5e0!3m2!1sen!2sin!4v1750000000000!5m2!1sen!2sin"
-            width="100%"
-            height="340"
-            style={{ border: 0, display: 'block' }}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+          {/* Clickable map image — opens Google Maps */}
+          <a
+            href={MAPS_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block relative group"
+          >
+            <img
+              src="/images/map-location.png"
+              alt="Location map — Thekkedathu Chamakkala Vadakkethil, Nazareth"
+              className="w-full object-cover"
+              style={{ maxHeight: '360px', objectPosition: 'center' }}
+            />
+            {/* Hover overlay */}
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center">
+              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 text-foreground font-sans font-bold text-sm px-5 py-2.5 rounded-full shadow-lg flex items-center gap-2">
+                <Navigation className="w-4 h-4 text-primary" />
+                Open in Google Maps
+              </span>
+            </div>
+          </a>
 
-          {/* Open in Google Maps button */}
-          <div className="bg-background px-6 py-4 flex items-center justify-between border-t border-border/40">
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <MapPin className="w-4 h-4 text-primary" />
-              <span className="font-sans text-sm">Thekkedathu Chamakkala Vadakkethil, Nazareth</span>
+          {/* Bottom bar */}
+          <div className="bg-background px-5 py-4 flex items-center justify-between border-t border-border/40 gap-3">
+            <div className="flex items-center gap-2 text-muted-foreground min-w-0">
+              <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
+              <span className="font-sans text-sm truncate">Thekkedathu Chamakkala Vadakkethil, Nazareth</span>
             </div>
             <a
               href={MAPS_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-xs font-bold font-sans text-primary hover:text-primary/80 tracking-wider uppercase transition-colors"
+              className="flex items-center gap-1.5 text-xs font-bold font-sans text-primary hover:text-primary/70 tracking-wider uppercase transition-colors flex-shrink-0"
             >
               <Navigation className="w-3.5 h-3.5" />
-              Open in Google Maps
+              Get Directions
             </a>
           </div>
         </motion.div>
