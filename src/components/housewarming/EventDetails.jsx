@@ -8,12 +8,13 @@ const details = {
   address: 'Thekkedathu Chamakkala Vadakkethil, Nazareth',
 };
 
-const MAPS_LINK = 'https://maps.app.goo.gl/9E7QtTRCPePSwCQ38';
+// Works on iOS, Android, and browser — drops a pin at exact coords
+const MAPS_LINK = 'https://www.google.com/maps?q=9.0925,76.8441667';
 
-// 9°05'33.0"N 76°50'39.0"E = 9.0925, 76.8441667
-// !5e1 = satellite | !2z = pin from DMS coords | d200 = tight zoom
+// Satellite view, zoomed out slightly, pin from DMS coords.
+// !3m2!3m1!2z... format makes Google's own "Open in Maps" button also open pinned.
 const MAP_EMBED_SRC =
-  'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d800!2d76.8441667!3d9.0925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDUnMzMuMCJOIDc2wrA1MCczOS4wIkU!5e1!3m2!1sen!2sin!4v1750000000003!5m2!1sen!2sin';
+  'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d800!2d76.8441667!3d9.0925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!3m1!2zOcKwMDUnMzMuMCJOIDc2wrA1MCczOS4wIkU!5e1!3m2!1sen!2sin!4v1750000000004!5m2!1sen!2sin';
 
 function Card({ icon: Icon, label, value, delay }) {
   const [ref, isVisible] = useScrollAnimation(0.1);
@@ -70,7 +71,6 @@ export default function EventDetails() {
           <Card icon={MapPin} label="Location" value={details.address} delay={0.3} />
         </div>
 
-        {/* Google Maps embed — satellite, pinned to exact coords */}
         <motion.div
           ref={mapRef}
           initial={{ opacity: 0, y: 30 }}
