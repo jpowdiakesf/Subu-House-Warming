@@ -13,7 +13,7 @@ const MAPS_LINK = 'https://maps.app.goo.gl/9E7QtTRCPePSwCQ38';
 // 9°05'33.0"N 76°50'39.0"E = 9.0925, 76.8441667
 // !5e1 = satellite | !2z = pin from DMS coords | d200 = tight zoom
 const MAP_EMBED_SRC =
-  'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d200!2d76.8441667!3d9.0925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDUnMzMuMCJOIDc2wrA1MCczOS4wIkU!5e1!3m2!1sen!2sin!4v1750000000003!5m2!1sen!2sin';
+  'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d800!2d76.8441667!3d9.0925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDUnMzMuMCJOIDc2wrA1MCczOS4wIkU!5e1!3m2!1sen!2sin!4v1750000000003!5m2!1sen!2sin';
 
 function Card({ icon: Icon, label, value, delay }) {
   const [ref, isVisible] = useScrollAnimation(0.1);
