@@ -10,10 +10,10 @@ const details = {
 
 const MAPS_LINK = 'https://maps.app.goo.gl/9E7QtTRCPePSwCQ38';
 
-// Satellite view (!5e1), zoomed in, pinned to exact place ID
-// Place: Thekkedathu Chamakkala Vadakkethil, near Thevakkal, Ernakulam
+// Exact coords: 9°05'33.0"N 76°50'39.0"E (9.0925, 76.8442)
+// !5e1 = satellite view | !2z encodes the DMS pin marker | d200 = tight zoom
 const MAP_EMBED_SRC =
-  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d980!2d76.3622!3d10.0472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d513abdd337%3A0x36a47536e6fd03f4!2sThekkedathu%20Chamakkala%20Vadakkethil!5e1!3m2!1sen!2sin!4v1750000000001!5m2!1sen!2sin';
+  'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d200!2d76.84416666666667!3d9.0925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDUnMzMuMCJOIDc2wrA1MCczOS4wIkU!5e1!3m2!1sen!2sin!4v1750000000002!5m2!1sen!2sin';
 
 function Card({ icon: Icon, label, value, subValue, delay }) {
   const [ref, isVisible] = useScrollAnimation(0.1);
@@ -84,12 +84,6 @@ export default function EventDetails() {
           {/* Gold top accent */}
           <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/60 via-primary to-primary/60 z-10" />
 
-          {/* 
-            NOTE: The small blue "View larger map" button inside the iframe is rendered 
-            by Google and cannot be removed — it opens the place in Google Maps,
-            which may show a general area if Google's place ID doesn't resolve exactly.
-            Use the "Open in Google Maps" button below for the exact location link.
-          */}
           <iframe
             title="Nazareth Location"
             src={MAP_EMBED_SRC}
@@ -101,7 +95,7 @@ export default function EventDetails() {
             referrerPolicy="no-referrer-when-downgrade"
           />
 
-          {/* Bottom bar — our custom button links to the exact short URL */}
+          {/* Bottom bar */}
           <div className="bg-background px-5 py-4 flex items-center justify-between border-t border-border/40 gap-3">
             <div className="flex items-center gap-2 text-muted-foreground min-w-0">
               <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
