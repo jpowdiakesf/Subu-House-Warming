@@ -4,7 +4,6 @@ import HousePhoto from '@/components/housewarming/HousePhoto';
 import EventDetails from '@/components/housewarming/EventDetails';
 import Gallery from '@/components/housewarming/Gallery';
 import RSVPSection from '@/components/housewarming/RSVPSection';
-
 import Footer from '@/components/housewarming/Footer';
 
 export default function Home() {

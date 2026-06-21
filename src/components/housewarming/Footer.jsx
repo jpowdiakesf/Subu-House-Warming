@@ -45,7 +45,7 @@ export default function Footer() {
         </p>
 
         <p className="font-sans text-xs text-white/30 mt-10 tracking-widest uppercase">
-          26 · July · 2026
+          25th · July · 2026
         </p>
       </motion.div>
     </footer>
